@@ -1,0 +1,11 @@
+# All about that bash
+# when sourcing, ask the real question
+echo "(yಠ,ಠ)y why u no bash?!?!"
+
+# alias
+alias ll="ls -la" 
+alias grep="grep --color=auto"
+alias gt_brclean="git branch | grep -v -e develop -e master | xargs git branch -d 2>/dev/null"
+alias ..='cd ..'
+alias now='date +"%T"'
+
