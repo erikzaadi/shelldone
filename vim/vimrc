@@ -11,10 +11,18 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 " Plug 'tpope/vim-eunuch'
+" Plug 'tpope/vim-commentary'
+" Plug 'tpope/vim-vinegar'
+" Plug 'tpope/vim-surround'
+
 
 " Plug 'w0rp/ale' "Syntax checking and highlighting
+" Plug 'airblade/vim-gitgutter' " Adds sidebar with git change info
+" Plug 'SirVer/ultisnips' " ALL THE SNIPPETS
+" Plug 'itchyny/lightline.vim' " Status bar
 
-" Amazong file finder
+
+" AMAZONG file finder
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
 "
