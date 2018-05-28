@@ -8,7 +8,7 @@ fi
 
 brew install $(cat ./homebrew/brew)
 
-if [[ ${SHELL} != *"zsh"* ]]; then
+if [[ "$(basename ${SHELL})" != "zsh" ]]; then
   ZSH=$(which zsh)
   chsh -s ${ZSH}
   sudo chsh -s ${ZSH}
