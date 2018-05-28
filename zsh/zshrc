@@ -1,0 +1,26 @@
+#!/bin/zsh
+export PATH=~/bin:${PATH}
+
+# Unicode FTW
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+
+# zsh > bash
+autoload -U compinit
+compinit
+autoload -U bashcompinit
+bashcompinit
+
+export TERM=xterm-256color
+export EDITOR=vim
+autoload -U zmv
+alias mmv='noglob zmv -W'
+alias :q=exit #https://coderwall.com/p/fdtaia?&p=2&q=
+alias :e=vim
+alias edit=vim
+alias e=vim
+export ANSIBLE_COW_SELECTION=moofasa
+alias what-year-is-it='mas upgrade;brew update;brew upgrade;brew cleanup -s;vim -c ":PlugUpdate"'
+
+[[ -s ~/.envvars.rc ]] && . ~/.envvars.rc

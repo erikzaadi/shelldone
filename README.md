@@ -2,6 +2,8 @@
 
 ### Because you need a minimal TUI configuration that just works
 
+**NOTE:** This configuration is only for Mac.
+
 #### Installation:
 
 ```sh

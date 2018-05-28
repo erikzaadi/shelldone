@@ -1,0 +1,19 @@
+#!/bin/bash
+CURRENT_LANGUAGE=`apple-language`
+#TODO Add your languages here and in switch case below
+SWEDEN="🇸🇪"
+ISRAEL="🇮🇱"
+US="🇺🇸"
+
+
+case ${CURRENT_LANGUAGE} in
+    ABC)
+        echo ${US}
+        ;;
+    Swedish)
+        echo ${SWEDEN}
+        ;;
+    Hebrew)
+        echo ${ISRAEL}
+        ;;
+esac
