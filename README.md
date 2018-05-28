@@ -8,6 +8,10 @@
 ./install.sh
 ```
 
+#### Installing manually
+
+Just copy or symlink the wanted dotfiles to your home dir
+
 #### Tweaking
 
 ## TMUX

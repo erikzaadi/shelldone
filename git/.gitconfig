@@ -1,10 +1,25 @@
 [alias]
+  list-aliases = "!git config -l | grep alias | cut -c 7-"
+
+  c = commit
+
+  #changes executable bit of file in index: git chmod +|- FILE
+  chmod = "!f() { git update-index --chmod=$1x $2; }; f"
+
+  mergef = merge --ff-only
+
+  f-n-m = "!f() { WANTED_BRANCH="${1:-master}"; echo "Fetching and merging ${WANTED_BRANCH}";git fetch origin "${WANTED_BRANCH}:${WANTED_BRANCH}"; }; f"
+
+  r-b-m = "!f() { WANTED_BRANCH="${1:-master}"; echo "Rebasing ${WANTED_BRANCH}";git rebase -i "${WANTED_BRANCH}"; }; f"
+
+  mic-drop = "!f() { echo "Cleaning up like a boss!";git branch -d "${1}";git push origin ":${1}"; }; f"
+
 
   # diff
   df = "!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd \"$GIT_PREFIX\"; git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX; }; f"
   dfc = "!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd \"$GIT_PREFIX\"; git diff --cached --color $@ | diff-so-fancy | less --tabs=4 -RFX; }; f"
 
-  # log stuff 
+  # log stuff
   lg = log --color --graph --date-order --pretty=format:'%C(magenta)%h %C(reset)-%C(red)%d %C(reset)%s %C(bold blue)<%an> %C(reset)%C(green)%ar%C(cyan)(%ad)' --date=local
   ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
 
@@ -20,16 +35,16 @@
 %n%C(ul)Committer:%C(reset) %C(bold blue)%cn<%ce> %C(reset)%C(green)%cr%C(cyan)(%cd)\
 %n'  --stat --date=local --patch
 
-  # rebase over master 
+  # rebase over master
   r = rebase -i master
   # Add a quick fix commit
   fixup = "commit --fixup HEAD "
   # after a few fixup , use squash , to automatically squash them to the last meaningful commit
-  # i.e  git fixup , oops I forgot something else, git fixup , oops , something else git fixup AND Finally git squash will magically squash everything  
+  # i.e  git fixup , oops I forgot something else, git fixup , oops , something else git fixup AND Finally git squash will magically squash everything
   squash = rebase -i master --autosquash
   grog = log --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)\"
   fsquash = commit --fixup HEAD && rebase -i master  --autosquash
-  # OPEN latest commit directly in chrome , use : gem install git-browse-remote 
+  # OPEN latest commit directly in chrome , use : gem install git-browse-remote
   web = browse-remote --rev
   stat = log --stat --oneline
   nuke = !sh -c 'git branch -D $1 && git push origin :$1' -
@@ -42,19 +57,26 @@
   status = auto
   branch = auto
   ui = true
+
+[rerere]
+  enabled = true
+
 [push]
-  default = simple
+  default = tracking
 
 [color "diff-highlight"]
   oldNormal = red bold
   oldHighlight = red bold 52
   newNormal = green bold
   newHighlight = green bold 22
+
 [interactive]
   diffFilter = "diff-so-fancy"
+
 [pager]
   diff = diff-so-fancy | less --tabs=1,5 -R
   show = diff-so-fancy | less --tabs=1,5 -R
+
 [color "diff"]
   meta = 227
   frag = magenta bold
@@ -62,3 +84,9 @@
   old = red bold
   new = green bold
   whitespace = red reverse
+
+[help]
+  autocorrect = 1
+
+[rebase]
+  autosquash = true
